@@ -6,8 +6,8 @@ Deploy NUS SoC LLM as a Service locally as an app for easy chatting
 2. Activate venv using `.venv\Scripts\activate`(Windows) or `source .venv/bin/activate`(Linux)
 3. Install dependencies using `pip install -r requirements.txt` 
 4. Create a env file (.env) containing 
-SOCLAAS_API_KEY="<your api key>"
-SOCLAAS_BASE_URL="https://soclaas-api.comp.nus.edu.sg/v1"
+`SOCLAAS_API_KEY="<your api key>"`
+`SOCLAAS_BASE_URL="https://soclaas-api.comp.nus.edu.sg/v1"`
 5. Run soclaas_app.py
 6. Check the Terminal for the link to the local URL which is hosting the applet.
 ![alt text](assets/dashboard.png)

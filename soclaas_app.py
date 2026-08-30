@@ -22,7 +22,7 @@ if not BASE_URL:
 
 
 # ============================================================
-# SoCLaS Client
+# SoCLaaS Client
 # ============================================================
 
 client = OpenAI(
@@ -50,7 +50,7 @@ models = get_models()
 
 if not models:
     raise RuntimeError(
-        "No models were returned by SoCLaS. "
+        "No models were returned by SoCLaaS. "
         "Check your API key and BASE_URL."
     )
 
@@ -128,13 +128,13 @@ def clear_chat():
 # ============================================================
 # GUI
 # ============================================================
-with gr.Blocks(title="SoCLaS Chat") as demo:
+with gr.Blocks(title="SoCLaaS Chat") as demo:
 
     gr.Markdown(
         """
-        # SoCLaS Chat
+        # SoCLaaS Chat
 
-        Chat with models available through the NUS SoCLaS API.
+        Chat with models available through the NUS SoCLaaS API.
         """
     )
 
@@ -203,7 +203,7 @@ with gr.Blocks(title="SoCLaS Chat") as demo:
 # ============================================================
 
 if __name__ == "__main__":
-    print("\nStarting SoCLaS Chat...")
+    print("\nStarting SoCLaaS Chat...")
     print("Open the local URL shown below.\n")
 
     demo.launch()
