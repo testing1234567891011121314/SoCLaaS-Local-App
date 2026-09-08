@@ -24,3 +24,18 @@ Deploy NUS SoC LLM as a Service locally as an app for easy chatting
 - When connecting remotely, you need a VPN. Guide to setup CISCO vpn is here https://nusit.nus.edu.sg/eguides/
 
 - For building your own webapp, refer to docs here https://dochub.comp.nus.edu.sg/cf/guides/soclaas/start
+
+
+Common Problem
+An environment file is configured but terminal environment injection is disabled. Enable "python.terminal.useEnvFile" to use environment variables from .env files in terminals.
+
+This message is a VS Code notification, not a restriction from SoCLaaS. It means VS Code has found your .env file containing your API token, but it is preventing your terminal from reading it for security or configuration reasons.To fix this, you just need to allow VS Code to pass your .env variables into your terminal session.
+
+How to Fix It
+
+Method 1: Click the Notification (Fastest)
+
+If the message is still visible as a popup in the bottom right corner of VS Code, look for a button on it that says "Enable" or "Allow" and click it.
+
+Method 2: Update Your Settings ManuallyOpen VS Code Settings by pressing Ctrl + , (Windows/Linux) or Cmd + , (Mac).In the top search bar, type or paste: python.terminal.useEnvFileLocate the setting labeled Python › Terminal: Use Env File.Check the box to turn it On (set it to true).Important: Close your current terminal window and open a new one (`Ctrl + Shift + ``) for the changes to take effect.
+![alt text](assets/env.png)

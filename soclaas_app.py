@@ -1,7 +1,8 @@
 import os
 
 import gradio as gr
-from dotenv import load_dotenv
+from pathlib import Path
+from dotenv import dotenv_values
 from openai import OpenAI
 
 
@@ -9,10 +10,12 @@ from openai import OpenAI
 # Configuration
 # ============================================================
 
-load_dotenv()
 
-API_KEY = os.environ.get("SOCLAAS_API_KEY")
-BASE_URL = os.environ.get("SOCLAAS_BASE_URL")
+ENV_FILE = Path(__file__).resolve().parent / ".env"
+config = dotenv_values(ENV_FILE)
+
+API_KEY = config.get("SOCLAAS_API_KEY")
+BASE_URL = config.get("SOCLAAS_BASE_URL")
 
 if not API_KEY:
     raise RuntimeError("SOCLAAS_API_KEY is missing from .env")
@@ -110,11 +113,14 @@ def chat(message, history, model):
             "content": message,
         })
 
+        # Print the real error safely to YOUR terminal/backend logs
+        # print(f"Internal Chat Error: {e}") 
+        
+        # Send a safe, generic message to the user frontend
         history.append({
             "role": "assistant",
-            "content": f"Error: {e}",
+            "content": "An error occurred while communicating with the server. Please try again later.",
         })
-
         return history
 
 # ============================================================
@@ -206,4 +212,5 @@ if __name__ == "__main__":
     print("\nStarting SoCLaaS Chat...")
     print("Open the local URL shown below.\n")
 
-    demo.launch()
+    # This forces anyone opening the link to log in first
+    demo.launch(share=True, auth=("User", "Password1"))
